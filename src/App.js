@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import './App.css';
 
-function App() {
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import About from './components/About';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Roadmap from './components/Roadmap';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+
+export default function App() {
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true, offset: 80 });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="min-h-screen bg-radial-fade">
+      <Navbar />
+      <main>
+        <section id="home"><Hero /></section>
+        <section id="about" className="section"><About /></section>
+        <section id="skills" className="section"><Skills /></section>
+        <section id="projects" className="section"><Projects /></section>
+        <section id="roadmap" className="section"><Roadmap /></section>
+        <section id="contact" className="section"><Contact /></section>
+      </main>
+      <Footer />
     </div>
   );
 }
-
-export default App;
